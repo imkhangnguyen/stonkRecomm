@@ -3,6 +3,7 @@ import sentiment_check as sen
 companylist = ['Apple', 'Telsa', 'Nvidia']
 companyscore =['10','-24','99']
 D = dict(zip(companylist, companyscore))
+
 def get_key(val):
     for key, value in D.items():
          if val == value:
