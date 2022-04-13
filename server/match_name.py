@@ -7,8 +7,9 @@ def match():
     #zip those 2 into a dictionary
     #return the dictionary
 
-
-    df = lib.pd.read_csv(r'C:\Users\khangn\Desktop\stonkRecomm\server\data.csv')
+    
+    #df = lib.pd.read_csv('data.csv')
+    df = lib.pd.read_csv(r'C:\Users\khang\OneDrive\Desktop\stonkRecomm\server\data.csv')
     symbols = df['Symbol'].values.tolist()
     name = df['Name'].values.tolist()
     comp_dict = dict(zip(name, symbols))
@@ -26,4 +27,6 @@ def get_name(val, comp_dict):
     return "key doesn't exist"
 
 #comp_list = match()
-#print(get_name('TSLA',comp_list))
+#print(get_name('TSLA',comp_list)) 
+#path = lib.os.path.join(lib.os.getcwd(), 'data.csv')
+#print(lib.os.path.join(lib.os.getcwd(), 'data.csv'))

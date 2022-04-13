@@ -4,7 +4,10 @@ def inputProcess(inputs):
 # Process user input
     valid_input = []
     for input in inputs:
-        df = lib.pd.read_csv(r'C:\Users\khangn\Desktop\stonkRecomm\server\data.csv')
+
+        
+        #df = lib.pd.read_csv('data.csv')
+        df = lib.pd.read_csv(r'C:\Users\khang\OneDrive\Desktop\stonkRecomm\server\data.csv')
         symbols = df['Symbol'].values.tolist()
         #print(symbols)
         user_input = input
@@ -17,8 +20,8 @@ def inputProcess(inputs):
     return valid_input
 
    
-
+#print(lib.os.path.join(lib.os.getcwd(), 'data.csv'))
 #stock_list = ['TsLA','NvdA','AMD', 'dfsjkl']
 #stock_test = inputProcess(stock_list)
-
+#data_path = lib.os.path.join(lib.os.getcwd(), 'data.csv')
 #print(stock_test)

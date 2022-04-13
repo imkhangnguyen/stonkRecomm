@@ -8,25 +8,27 @@ import symbol_check as symCheck
 import lib_import as lib
 
 
-def main():
-    userInput = ['TsLA','NvdA','AMD','GOOGl','AmZn']
+def main(userInput):
+    
 
 
     processedInput = symCheck.inputProcess(userInput)
 
     
-    #companyName = translate.match()
+    companyName = translate.match()
 
-    #companyList =[]
-    #for company in processedInput:
-        #print(company)
-        #companyList.append(translate.get_name(company, companyName))
+    companyList =[]
+    for company in processedInput:
+        companyList.append(translate.get_name(company, companyName))
     
     #print(companyList)
     companyScore = []
+    sentiment_model = lib.flair.models.TextClassifier.load('en-sentiment')
     for company in processedInput:
+        print('Processing...' + company)
         df = lib.pd.DataFrame(tweet.get_tweet(company))
-        companyScore.append(senCheck.sen_check(df))
+        companyScore.append(senCheck.sen_check(df,sentiment_model))
+       
     print("Companies: ")
     print(processedInput)
     print("Sentimental score: ")
@@ -38,4 +40,5 @@ def main():
     print(queue)
 
 
-main()
+userInput = ['TsLA','NvdA','AMD','GOOGl','AmZn']
+main(userInput)

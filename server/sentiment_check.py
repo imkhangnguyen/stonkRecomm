@@ -1,8 +1,8 @@
 import lib_import as lib
 
 
-def sen_check(df):
-    sentiment_model = lib.flair.models.TextClassifier.load('en-sentiment')
+def sen_check(df, sentiment_model):
+    
     sentimental_score =0
     for tweet in df['content']:
         #Setting clean up parameters
