@@ -1,22 +1,37 @@
-import sentiment_check as sen
+import lib_import as lib
+import collections
 
-companylist = ['Apple', 'Telsa', 'Nvidia']
-companyscore =['10','-24','99']
-D = dict(zip(companylist, companyscore))
+#companyList = ['Apple', 'Telsa', 'Nvidia','AMZN','GOOGL']
+#companyscore =['10','-24','99','-17','55']
+#companyScoreDict = dict(zip(companyList, companyscore))
 
-def get_key(val):
-    for key, value in D.items():
+
+def get_key(val, companyScoreDict):
+    for key, value in companyScoreDict.items():
          if val == value:
              return key
  
     return "key doesn't exist"
-queue = []
-for item in companylist:
-    queue.append(D[item])
-print("\nInitialize queue")
-print(queue)
 
-print("\nPop")
-for item in companylist:
-    score = queue.pop(0)
-    print(get_key(score))
+
+def queue_up(companyList, companyScoreDict):
+
+    
+    myQueue =[]
+    priorQueue = []
+    returnQueue = []
+    for item in companyList:
+        myQueue.append(companyScoreDict[item])
+
+    priorQueue = sorted(myQueue)
+
+    for item in range(3):
+        score = priorQueue.pop()
+        name = get_key(score, companyScoreDict)
+        returnQueue.append(name)
+    
+    return returnQueue
+    
+#queue = queue_up(companyList,companyScoreDict)
+#print(queue)
+    

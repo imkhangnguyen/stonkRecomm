@@ -4,7 +4,7 @@ def inputProcess(inputs):
 # Process user input
     valid_input = []
     for input in inputs:
-        df = lib.pd.read_csv('Stock_symbol.csv')
+        df = lib.pd.read_csv(r'C:\Users\khangn\Desktop\stonkRecomm\server\data.csv')
         symbols = df['Symbol'].values.tolist()
         #print(symbols)
         user_input = input
