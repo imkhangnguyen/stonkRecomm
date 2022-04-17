@@ -37,7 +37,6 @@ def main(userInput):
 
     queue = myQueue.queue_up(processedInput,companyScoreDict)
     print("Top 3 Recommendation: ") 
-    print(queue)
 
     return queue
 
