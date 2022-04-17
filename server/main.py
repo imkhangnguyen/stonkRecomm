@@ -39,6 +39,9 @@ def main(userInput):
     print("Top 3 Recommendation: ") 
     print(queue)
 
+    return queue
 
 userInput = ['TsLA','NvdA','AMD','GOOGl','AmZn']
-main(userInput)
+queue = main(userInput)
+
+print(queue)
