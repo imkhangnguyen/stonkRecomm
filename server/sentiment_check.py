@@ -2,7 +2,7 @@ import lib_import as lib
 
 
 def sen_check(df, sentiment_model):
-    
+    numberOfPositive = 0
     sentimental_score =0
     for tweet in df['content']:
         #Setting clean up parameters
@@ -21,7 +21,9 @@ def sen_check(df, sentiment_model):
         sentiment = sentence.labels[0].value
         if sentiment == 'POSITIVE':
             sentimental_score = sentimental_score + 2
+            numberOfPositive = numberOfPositive + 1
         else:
             sentimental_score = sentimental_score - 1
     
-    return sentimental_score
+    return sentimental_score, numberOfPositive
+    

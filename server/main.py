@@ -23,11 +23,15 @@ def main(userInput):
     
     #print(companyList)
     companyScore = []
+    companyTweet = []
     sentiment_model = lib.flair.models.TextClassifier.load('en-sentiment')
     for company in processedInput:
         print('Processing...' + company)
         df = lib.pd.DataFrame(tweet.get_tweet(company))
-        companyScore.append(senCheck.sen_check(df,sentiment_model))
+        sen_score, positive = senCheck.sen_check(df,sentiment_model)
+        companyScore.append(sen_score)
+        companyTweet.append(positive)
+        
        
     print("Companies: ")
     print(processedInput)
@@ -36,11 +40,14 @@ def main(userInput):
     companyScoreDict = dict(zip(processedInput, companyScore))
 
     queue = myQueue.queue_up(processedInput,companyScoreDict)
+
+    companyTweetDict = dict(zip(processedInput, companyTweet))
     print("Top 3 Recommendation: ") 
 
-    return queue
+    return queue, companyTweetDict
 
 userInput = ['TsLA','NvdA','AMD','GOOGl','AmZn']
-queue = main(userInput)
+queue,dict = main(userInput)
 
 print(queue)
+print(dict)
