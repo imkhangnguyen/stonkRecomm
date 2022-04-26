@@ -1,30 +1,33 @@
 import React, { useState } from 'react';
 
-const Input = ({ handleAddStock }) => {
+const Input = ({ handleAddStocks }) => {
   const [input, setInput] = useState('');
 
   const handleChange = (e) => {
-    setInput(e.target.value);
+    setInput(e.target.value.toUpperCase());
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
     if (!input) return;
-    handleAddStock({ id: Math.floor(Math.random() * 100000), symbol: input });
+    console.log(input.split(' '));
+    handleAddStocks(input.split(' '));
     setInput('');
   };
   return (
     <form className="input-form" onSubmit={handleSubmit}>
       <input
+        style={{ width: '50vw' }}
+        width={500}
         type="text"
-        placeholder="Enter a symbol"
+        placeholder="Enter symbols"
         value={input}
         name="text"
         className="stock-input"
         onChange={handleChange}
         autoComplete="off"
       />
-      <button className="submit-button">+</button>
+      <button className="submit-button">Recomm</button>
     </form>
   );
 };

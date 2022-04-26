@@ -7,7 +7,7 @@ def inputProcess(inputs):
 
         
         #df = lib.pd.read_csv('data.csv')
-        df = lib.pd.read_csv(r'C:\Users\Hawk\stonkRecomm\serverdata.csv')
+        df = lib.pd.read_csv(r'data.csv')
         symbols = df['Symbol'].values.tolist()
         #print(symbols)
         user_input = input

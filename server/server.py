@@ -1,12 +1,13 @@
+from urllib import response
 from flask import Flask, request, jsonify
-from flask_restful import Rescource, Api
-
+from flask_cors import CORS
+import main
 
 app = Flask(__name__)
+CORS(app)
 
-
-@app.route('/', methods=['GET'])
+@app.route('/', methods=['POST'])
 def get_stocks():
-    input = request.args.get('input')
-    result = main(input)
+    data = request.get_json()
+    result = main.main(data)
     return jsonify(result)

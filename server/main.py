@@ -46,8 +46,8 @@ def main(userInput):
 
     return queue, companyTweetDict
 
-userInput = ['TsLA','NvdA','AMD','GOOGl','AmZn']
-queue,dict = main(userInput)
+# userInput = ['TsLA','NvdA','AMD','GOOGl','AmZn']
+# queue,dict = main(userInput)
 
-print(queue)
-print(dict)
+# print(queue)
+# print(dict)

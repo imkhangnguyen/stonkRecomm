@@ -1,11 +1,17 @@
 import React, { useState } from 'react';
 import Input from './Input';
 
-const StockList = ({ stocks }) => {
+const StockList = ({ stocks, dict }) => {
   return (
     <div>
-      {stocks.map((stock) => {
-        return <div className="stock">{stock.symbol}</div>;
+      <h1>Stocks Entered</h1>
+      {stocks.map((stock, key) => {
+        return (
+          <div key={key} className="stock">
+            <div>{stock}</div>
+            <div style={{ color: 'gray' }}>Score: {dict[stock]}</div>
+          </div>
+        );
       })}
     </div>
   );
