@@ -8,6 +8,7 @@ function App() {
   const [stocks, setStocks] = useState([]);
   const [results, setResults] = useState([]);
   const [rankDict, setRankDict] = useState({});
+  const [priceDict, setPriceDict] = useState({});
   const [loading, setLoading] = useState(false);
   const [ready, setReady] = useState(false);
   const [err, setErr] = useState(false);
@@ -24,11 +25,13 @@ function App() {
     setReady(true);
     setResults(data[0]);
     setRankDict(data[1]);
+    console.log(data[2]);
+    setPriceDict(data[2]);
     console.log(data);
     console.log(results);
   };
 
-  const getRecomm = async () => {
+  const getPrice = async (stocks) => {
     const res = await axios.get(
       'https://api.polygon.io/v3/reference/tickers?active=true&sort=ticker&order=asc&limit=10&apiKey=cnoCmpcsXDv6vDdj17wIcrYrd3PJGFUI'
     );
@@ -52,10 +55,20 @@ function App() {
       {err && <h3 style={{ color: 'red' }}>Error: Enter at least 3 stocks</h3>}
       {loading && <h1>Fetching Results...</h1>}
       {ready && (
-        <StockList stocks={results} dict={rankDict} isTopResults={true} />
+        <StockList
+          stocks={results}
+          dict={rankDict}
+          prices={priceDict}
+          isTopResults={true}
+        />
       )}
       {ready && (
-        <StockList stocks={stocks} dict={rankDict} isTopResults={false} />
+        <StockList
+          stocks={stocks}
+          dict={rankDict}
+          prices={priceDict}
+          isTopResults={false}
+        />
       )}
     </div>
   );
