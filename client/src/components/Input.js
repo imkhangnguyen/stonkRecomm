@@ -17,7 +17,7 @@ const Input = ({ handleAddStocks }) => {
   return (
     <form className="input-form" onSubmit={handleSubmit}>
       <input
-        style={{ width: '50vw' }}
+        style={{ width: '50vw', fontSize: '2em' }}
         width={500}
         type="text"
         placeholder="Enter symbols"
