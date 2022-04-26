@@ -3,7 +3,6 @@ import { useState } from 'react';
 import Input from './components/Input';
 import StockList from './components/StockList';
 import axios from 'axios';
-import Results from './components/Results';
 
 function App() {
   const [stocks, setStocks] = useState([]);
@@ -15,8 +14,10 @@ function App() {
 
   const setStockList = async (stocks) => {
     setStocks(stocks);
-    if (stocks.length < 3) setErr(true);
-    else setErr(false);
+    if (stocks.length < 3) {
+      setErr(true);
+      return;
+    } else setErr(false);
     setLoading(true);
     const { data } = await axios.post('http://127.0.0.1:5000', stocks);
     setLoading(false);
@@ -42,15 +43,20 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <h1 style={{ color: 'turquoise' }}>StonkRecommender</h1>
+        <h1 style={{ fontSize: '3em' }} className="title">
+          StonkRecomm
+        </h1>
       </header>
 
       <Input handleAddStocks={setStockList} />
       {err && <h3 style={{ color: 'red' }}>Error: Enter at least 3 stocks</h3>}
       {loading && <h1>Fetching Results...</h1>}
-      {ready && <Results results={results} />}
-
-      <StockList stocks={stocks} dict={rankDict} />
+      {ready && (
+        <StockList stocks={results} dict={rankDict} isTopResults={true} />
+      )}
+      {ready && (
+        <StockList stocks={stocks} dict={rankDict} isTopResults={false} />
+      )}
     </div>
   );
 }
