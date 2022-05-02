@@ -42,21 +42,25 @@ button {
   background-color: rgb(207, 255, 207);
   border-radius: 10px;
   margin: 5px;
-  justify-content: space-between;
+  justify-content: flex-start;
   align-items: center;
+  padding-left: 1em;
+  padding-right: 1em;
 }
 
 .stock {
   display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content: space-between;
+  justify-content: flex-start;
   font-size: 35px;
   width: 70vw;
   border-style: solid;
   border-width: 0px;
   border-radius: 10px;
   margin: 2px;
+  padding-left: 1em;
+  padding-right: 1em;
 }
 
 .info {
