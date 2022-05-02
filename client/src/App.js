@@ -31,18 +31,6 @@ function App() {
     console.log(results);
   };
 
-  const getPrice = async (stocks) => {
-    const res = await axios.get(
-      'https://api.polygon.io/v3/reference/tickers?active=true&sort=ticker&order=asc&limit=10&apiKey=cnoCmpcsXDv6vDdj17wIcrYrd3PJGFUI'
-    );
-    const arr = res.data.results;
-    const newStocks = [];
-    arr.forEach((item) => {
-      newStocks.push(item.ticker);
-    });
-    console.log(newStocks);
-    setStocks(newStocks);
-  };
   return (
     <div className="App">
       <header className="App-header">
