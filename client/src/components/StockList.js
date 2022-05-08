@@ -19,6 +19,7 @@ const StockList = ({ stocks, dict, prices, isTopResults }) => {
               <div style={{ width: 100, height: 100 }}>
                 <CircularProgressbarWithChildren
                   className="circle"
+                  strokeWidth={6}
                   styles={buildStyles({
                     strokeLinecap: 'round',
                     textSize: '20px',
