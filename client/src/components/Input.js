@@ -1,7 +1,5 @@
 import React, { useState } from 'react';
 
-
-
 const Input = ({ handleAddStocks }) => {
   const [input, setInput] = useState('');
 
@@ -16,8 +14,6 @@ const Input = ({ handleAddStocks }) => {
     handleAddStocks(input.split(' '));
     setInput('');
   };
-
-
   return (
     <form className="input-form" onSubmit={handleSubmit}>
       <input
@@ -31,7 +27,7 @@ const Input = ({ handleAddStocks }) => {
         onChange={handleChange}
         autoComplete="off"
       />
-      <button className="btn btn-primary btn-lg">Recomm</button>
+      <button className="submit-button">Recomm</button>
     </form>
   );
 };
