@@ -11,13 +11,11 @@ import yfinance as yf
 
 def main(userInput):
     processedInput = symCheck.inputProcess(userInput)
-<<<<<<< HEAD
 
-=======
     error = 'Invalid inputs. Please enter again'
     if(len(processedInput) == 0):
         return error
->>>>>>> 32e8baaae3eb6f30a9026656b73878e5e0254951
+
     companyName = translate.match()
 
     companyList =[]
