@@ -13,7 +13,7 @@ const StockList = ({ stocks, dict, prices, isTopResults }) => {
         return (
           <div key={key} className={isTopResults ? 'stock-pick' : 'stock'}>
             <div>{stock}</div>
-            <div className="price">Price: ${prices[stock].currentPrice}</div>
+            <div className="price">${prices[stock].currentPrice}</div>
             <div className="info">
               <h3>Score:</h3>
               <div style={{ width: 100, height: 100 }}>
