@@ -15,7 +15,7 @@ def main(userInput):
         stockInfo[stock] = yf.Ticker(stock).info
 
     processedInput = symCheck.inputProcess(userInput)
-    
+
     companyName = translate.match()
 
     companyList =[]
