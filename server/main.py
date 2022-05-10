@@ -44,12 +44,12 @@ def main(userInput):
     companyTweetDict = dict(zip(processedInput, companyTweet))
     print("Top 3 Recommendation: ") 
 
-    stockInfo = {}
-    for stock in processedInput:
-        stockInfo[stock] = yf.Ticker(stock).info
+    # stockInfo = {}
+    # for stock in processedInput:
+    #     stockInfo[stock] = yf.Ticker(stock).info
 
 
-    return queue, companyTweetDict, stockInfo
+    return queue, companyTweetDict#, stockInfo
 
 # userInput = ['TsLA','NvdA','AMD','GOOGl','AmZn']
 # queue,dict = main(userInput)

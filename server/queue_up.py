@@ -1,42 +1,44 @@
 from math import floor
+import timeit
+from matplotlib import pyplot as plt
 import lib_import as lib
 import collections
 import random
 import math
-
-# companyList = ['Apple', 'Telsa', 'Nvidia','AMZN','GOOGL']
-# companyscore =['10','-24','99','-17','55']
-# companyScoreDict = dict(zip(companyList, companyscore))
-
 
 def get_key(val, companyScoreDict):
     for key, value in companyScoreDict.items():
          if val == value:
              return key
  
-    return "key doesn't exist"
+    return "key doesn't exist"    
 
+def queue_up_test(myQueue):
+    build_max_heap(myQueue)
+    res = []
+    heap_size = [len(myQueue)]
+    #priorQueue = sorted(myQueue)
+    for item in range(3):
+        res.append(extract_max(myQueue, heap_size[0], heap_size))
+    return res
+    
 
 def queue_up(companyList, companyScoreDict):
-
-    
     myQueue =[]
     heap_size = [0]
-    priorQueue = []
     returnQueue = []
     for item in companyList:
-        #myQueue.append(companyScoreDict[item])
-        insert(priorQueue, float(companyScoreDict[item]), heap_size[0], heap_size)
-
+        myQueue.append(companyScoreDict[item])
+        #insert(priorQueue, float(companyScoreDict[item]), heap_size[0], heap_size)
+    build_max_heap(myQueue)
+    heap_size = [len(myQueue)]
+    print(myQueue)
     #priorQueue = sorted(myQueue)
-
     for item in range(3):
-        score = extract_max(priorQueue, heap_size[0], heap_size)
+        score = extract_max(myQueue, heap_size[0], heap_size)
         name = get_key(score, companyScoreDict)
         returnQueue.append(name)
-    
     return returnQueue
-
 
 def maximum(arr):
     return arr[0]
@@ -88,3 +90,22 @@ def max_heapify(arr, i, n):
     if (max != i):
         arr[i-1], arr[max-1] = arr[max-1], arr[i-1]
         max_heapify(arr, max, n)
+
+
+x = range(5, 100000, 10000)
+y = []
+
+for i in range(len(x)):
+    samp = random.sample(range(10500555999), x[i])
+    start = timeit.default_timer()
+    res = queue_up_test(samp)
+    end = timeit.default_timer()
+    print(res)
+    y.append(end-start)
+
+table_data = [['Input Size', 'time(s)']]
+for i in range(len(x)):
+    table_data.append([x[i], y[i]])
+
+plt.table(cellText=table_data, loc='upper center')
+plt.show()

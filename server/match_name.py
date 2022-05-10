@@ -9,7 +9,7 @@ def match():
 
     
     #df = lib.pd.read_csv('data.csv')
-    df = lib.pd.read_csv(r'data.csv')
+    df = lib.pd.read_csv(r'constituents.csv')
     symbols = df['Symbol'].values.tolist()
     name = df['Name'].values.tolist()
     comp_dict = dict(zip(name, symbols))
